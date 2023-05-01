@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   arcore_flutter_plugin: ^0.1.0
   arkit_plugin: ^1.0.5
+  icons_launcher: ^2.1.0
+  another_flutter_splash_screen: ^1.1.4
 
 dev_dependencies:
   flutter_test:

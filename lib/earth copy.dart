@@ -58,38 +58,15 @@ class _ImageDetectionPageSecState extends State<ImageDetectionPageSec> {
     if (anchor is ARKitImageAnchor) {
       setState(() => anchorWasFound = true);
 
-      final material = ARKitMaterial(
-        lightingModelName: ARKitLightingModel.lambert,
-        diffuse: ARKitMaterialProperty.image('assets/image.jpeg'),
-      );
-      
-      final sphere = ARKitSphere(
-        materials: [material],
-        radius: 0.1,
-      );
+      // final imagePosition = anchor.transform.getColumn(3);
+      final imagePosition =anchor.transform.getTranslation();
 
-      
-
-      final earthPosition = anchor.transform.getColumn(3);
-
-      ARKitNode node1 = ARKitReferenceNode( url: 'models.scnassets/watch_f.dae', scale: vector.Vector3.all(.01), 
-      position: vector.Vector3(earthPosition.x, earthPosition.y, earthPosition.z));
-
-      final node = ARKitNode(
-        geometry: sphere,
-        position:
-            vector.Vector3(earthPosition.x, earthPosition.y, earthPosition.z),
-        eulerAngles: vector.Vector3.zero(),
-      );
+      ARKitNode node1 = ARKitReferenceNode( url: 'models.scnassets/watch2.dae',
+       scale: vector.Vector3.all(.01), 
+      position: vector.Vector3(imagePosition.x, imagePosition.y-1.0, imagePosition.z));
 
       arkitController.add(node1, parentNodeName: anchor.nodeName);
-      // arkitController.add(node);
 
-      timer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
-        final old = node.eulerAngles;
-        final eulerAngles = vector.Vector3(old.x + 0.01, old.y, old.z);
-        node.eulerAngles = eulerAngles;
-      });
     }
   }
 }
