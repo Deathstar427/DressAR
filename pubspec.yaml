@@ -40,6 +40,7 @@ dependencies:
   arkit_plugin: ^1.0.5
   icons_launcher: ^2.1.0
   another_flutter_splash_screen: ^1.1.4
+  lottie: ^2.3.2
 
 dev_dependencies:
   flutter_test:

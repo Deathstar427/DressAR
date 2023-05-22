@@ -19,7 +19,7 @@ class _BodyTrackingPageState extends State<BodyTrackingPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: const Text('Body Tracking Sample')),
+        appBar: AppBar(title: const Text('Body Tracking')),
         body: ARKitSceneView(
           configuration: ARKitConfiguration.bodyTracking,
           onARKitViewCreated: onARKitViewCreated,
@@ -37,7 +37,7 @@ class _BodyTrackingPageState extends State<BodyTrackingPage> {
       return;
     }
     final transform =
-        anchor.skeleton.modelTransformsFor(ARKitSkeletonJointName.leftHand);
+        anchor.skeleton.modelTransformsFor(ARKitSkeletonJointName.root);
     hand = _createSphere(transform!);
     arkitController.add(hand!, parentNodeName: anchor.nodeName);
   }
@@ -49,8 +49,8 @@ class _BodyTrackingPageState extends State<BodyTrackingPage> {
       transform.getColumn(3).z,
     );
     return ARKitReferenceNode(
-      url: 'models.scnassets/dash.dae',
-      scale: vector.Vector3.all(0.5),
+      url: 'models.scnassets/jeans.obj',
+      scale: vector.Vector3.all(0.011),
       position: position,
     );
   }
@@ -58,7 +58,7 @@ class _BodyTrackingPageState extends State<BodyTrackingPage> {
   void _handleUpdateAnchor(ARKitAnchor anchor) {
     if (anchor is ARKitBodyAnchor && mounted) {
       final transform =
-          anchor.skeleton.modelTransformsFor(ARKitSkeletonJointName.leftHand)!;
+          anchor.skeleton.modelTransformsFor(ARKitSkeletonJointName.root)!;
       final position = vector.Vector3(
         transform.getColumn(3).x,
         transform.getColumn(3).y,

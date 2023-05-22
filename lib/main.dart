@@ -1,9 +1,15 @@
 import 'package:dress_ar/body.dart';
+import 'package:dress_ar/bodyMain.dart';
 import 'package:dress_ar/config.dart';
-import 'package:dress_ar/earth%20copy.dart';
+import 'package:dress_ar/imageDetect.dart';
 import 'package:dress_ar/face.dart';
+import 'package:dress_ar/faceMain.dart';
+import 'package:dress_ar/faceNew.dart';
+import 'package:dress_ar/others.dart';
 import 'package:dress_ar/test.dart';
 import 'package:flutter/material.dart';
+
+import 'package:dress_ar/others.dart';
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 
 void main() {
@@ -71,64 +77,69 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+          bottom: const TabBar(tabs: [
+            Tab(text: "AR",),
+            Tab(text:"Other",),
+          ]),
+          
+        ),
+        body:  const TabBarView(children: 
+        [
+          FirstPage(),
+          SecondPage(),
+        ]
+        )
+        ),
+    );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  const FirstPage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: Column(children: [
+      
+    
+      Card(
+        child: ListTile(
+          title: Text("Face Detection"),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> FaceMain()));
+          },
+          trailing: Icon(Icons.arrow_forward_sharp),
+        ),
       ),
-      body:  Center(child: Column(children: [
-        
-        Card(
-          child: ListTile(
-            title: Text("Test"),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> TestPage()));
-            },
-            trailing: Icon(Icons.arrow_forward_sharp),
-          ),
+    
+      Card(
+        child: ListTile(
+          title: Text("Image Detection"),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> ImageDetectionPageSec()));
+          },
+          trailing: Icon(Icons.arrow_forward_sharp),
         ),
-
-        Card(
-          child: ListTile(
-            title: Text("Check Config"),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> CheckSupportPage()));
-            },
-            trailing: Icon(Icons.arrow_forward_sharp),
-          ),
+      ),
+    
+      Card(
+        child: ListTile(
+          title: Text("Body Detection"),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> BodyMain()));
+          },
+          trailing: Icon(Icons.arrow_forward_sharp),
         ),
-
-        Card(
-          child: ListTile(
-            title: Text("Face Mask"),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> FaceDetectionPage()));
-            },
-            trailing: Icon(Icons.arrow_forward_sharp),
-          ),
-        ),
-
-        Card(
-          child: ListTile(
-            title: Text("Image Detection"),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> ImageDetectionPageSec()));
-            },
-            trailing: Icon(Icons.arrow_forward_sharp),
-          ),
-        ),
-
-        Card(
-          child: ListTile(
-            title: Text("Body Detection"),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> BodyTrackingPage()));
-            },
-            trailing: Icon(Icons.arrow_forward_sharp),
-          ),
-        ),
-
-      ]),)
-      );
+      ),
+    
+    ]),);
   }
 }
 

@@ -1,5 +1,6 @@
 import 'package:arkit_plugin/arkit_plugin.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class CheckSupportPage extends StatelessWidget {
   @override
@@ -24,7 +25,13 @@ class CheckSupportPage extends StatelessWidget {
               return Text(' loading');
             }
             return Text(snapshot.data! ? ' supported' : ' not supported');
-          })
+          }),
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Lottie.asset("assets/ar.json"),
+            ),
+          ),
     ]);
   }
 }

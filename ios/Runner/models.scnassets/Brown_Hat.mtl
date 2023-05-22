@@ -1,0 +1,35 @@
+# Blender MTL File: 'Brown Hat.blend'
+# Material Count: 3
+
+newmtl Material.001
+Ns 489.999983
+Ka 0.500000 0.500000 0.500000
+Kd 0.009018 0.009018 0.009018
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Material.002
+Ns 489.999983
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.660316 0.639829
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump textures\\leather_white_nor_gl_4k.exr
+map_Kd textures\\leather_white_diff_4k.jpg
+map_Ns textures\\leather_white_rough_4k.jpg
+
+newmtl hat_
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.052247 0.019545 0.010601
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
